@@ -9,14 +9,15 @@
             <div class="card-header bg-primary text-white">カテゴリ</div>
             <div class="card-body">
                 <p class="card-text">カテゴリを管理します</p>
-                
+                <a href="{% url 'event:category_list' %}" class="btn btn-primary">一覧</a>
             </div>
         </div>
         <div class="card mb-3">
             <div class="card-header bg-primary text-white">イベント</div>
             <div class="card-body">
                 <p class="card-text">イベントを管理します</p>
-                
+                <a href="{% url 'event:event_list' %}" class="btn btn-primary">一覧</a>
+                <a href="{% url 'event:event_mylist' %}" class="btn btn-primary">マイイベント一覧</a>
             </div>
         </div>
     </div>

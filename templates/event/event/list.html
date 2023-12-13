@@ -8,6 +8,10 @@
 <div class="container mt-4">
     <h2 class="mb-4 p-2 bg-primary text-white">{{ title }}</h2>
     
+    <div class="mb-3">
+        <a href="{% url 'event:event_create' %}" class="btn btn-primary">新規作成</a>
+    </div>
+    
     {% bootstrap_pagination page_obj %}
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
@@ -19,6 +23,7 @@
                 <th>主催者</th>
                 <th>新規登録日時</th>
                 <th>更新日時</th>
+                <th>詳細</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +36,7 @@
                 <td>{{o.user.username}}</td>
                 <td>{{o.created_at|date:'Y年m月j日H時i分s秒'}}</td>
                 <td>{{o.modified_at|date:'Y年m月j日H時i分s秒'}}</td>
+                <th><a href="{% url 'event:event_detail' o.id %}">詳細</a></th>
             </tr>
             {% endfor %}
         </tbody>

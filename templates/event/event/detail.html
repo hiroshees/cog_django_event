@@ -40,7 +40,7 @@
     <div class="card mb-3">
         <div class="card-header bg-primary text-white">現在の参加者数</div>
         <div class="card-body">
-            <p class="card-text">人</p>
+            <p class="card-text">{{object.eventusers|length}}人</p>
         </div>
     </div>
 
@@ -48,6 +48,36 @@
     
     <h4 class="mb-4 p-2 bg-success text-white">イベント参加者</h4>
     
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>ユーザ名</th>
+                <th>メール</th>
+                <th>新規登録日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for eventuser in object.eventusers %}
+            <tr>
+                <td>{{eventuser.user.id}}</td>
+                <td>{{eventuser.user.username}}</td>
+                <td>{{eventuser.user.email}}</td>
+                <td>{{eventuser.created_at|date:'Y年m月j日H時i分s秒'}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="mb-3 d-flex justify-content-evenly">
+        {% if is_attended %}
+            <a href="{% url 'event:event_user_delete' object.id %}" class="btn btn-danger">辞退</a>
+            <a href="{% url 'event:chat_talk' object.id %}" class="btn btn-success">チャット</a>
+        
+        {% else %}
+            <a href="{% url 'event:event_user_create' object.id %}" class="btn btn-primary">参加</a>
+        {% endif %}
+    </div>
 
 </div>
 {% endblock %}

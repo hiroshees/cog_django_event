@@ -19,6 +19,7 @@
                 <th>主催者</th>
                 <th>新規登録日時</th>
                 <th>更新日時</th>
+                <th>更新</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                 <td>{{o.user.username}}</td>
                 <td>{{o.created_at|date:'Y年m月j日H時i分s秒'}}</td>
                 <td>{{o.modified_at|date:'Y年m月j日H時i分s秒'}}</td>
+                <td><a href="{% url 'event:event_update' o.id %}">更新</a></td>
             </tr>
             {% endfor %}
         </tbody>
